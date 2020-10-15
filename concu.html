@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+            <img src="js/ch.jpeg" alt="" style="width: 600px;height: 600px;" id="omg">
+                <button id="control" onclick="ctl()">Click Me</button>
+    <script>
+
+
+
+                    function ctl(){
+                       let img= document.getElementById("omg");
+                   let hi=img.src.split("/");
+                        if(hi[hi.length-1]=="ch.jpeg"){
+                                    img.src="js/gigi1.jpg";
+                        }else{
+                                    img.src="js/mygp2.jpg.jpg";
+                        }
+                    }
+                           
+    </script>
+</body>
+</html>
