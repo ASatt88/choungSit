@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Project</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Oxygen:wght@300;400&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+            <style type="text/css">                                                                                                                                                                                                                                                                                                                                                                                                                                      
+                                    *{
+                                            box-sizing: border-box;
+                                            font-family: 'Oxygen', sans-serif;
+                                            cursor: pointer;
+                                            user-select: none;
+                                            
+                                    }
+
+                                    body{
+                                               
+                                                background:url(js/gravity.jpg);
+                                                height: 100vh;
+                                               
+                                               
+                                              
+                                    }
+                                                        .ceeb{
+                                                                       
+                                                                          margin: 80px auto;
+                                                                          width: 400px;
+                                                                          height: 500px;
+                                                                          background-color:black;
+                                                                          border-radius: 2em;
+                                                                          color:red;
+                                                                          font-style: italic;
+                                                                          font-weight: 400px;
+                                                        }
+                                                                        .header{
+                                                                                        
+                                                                                        text-align: center;
+                                                                                        margin-top: 10px;
+                                                                                        padding: 10px;
+                                                                        }
+                                                                                                                                                        
+                                                                         .txtbox{
+                                                                        width: 300px;
+                                                                        margin-right: 15px;
+                                                                        padding: 10px;
+                                                                        margin-bottom: 10px;
+                                                                        border-radius: 100px;
+                                                                        height: 60px;
+                                                                        border-left: 3px dashed greenyellow;
+                                                                        
+                                                                                 }
+
+                                                        .btn{
+                                                                                                                                        
+                                                                padding: 10px;
+                                                                height: 60px;
+                                                                width: 60px;
+                                                                border-radius: 30px;
+                                                        }
+                                                                .txtbox::placeholder{
+                                                                        font-family: 'Indie Flower', cursive;
+                                                                        font-family: 'Oxygen', sans-serif;  
+                                                                                           
+                                                                }
+                                                                        .list{
+                                                                                                                                                                        
+                                                                                        border: 2px solid  rgb(14 93 236);
+                                                                                        height: 500px;
+                                                                                        background: #fffbfb;
+                                                                                        border-radius: 2em;    
+                                                                        }
+                                                                                .list-item{
+                                                                                                  border: 2px solid #00ffee;
+                                                                                                  padding: 15px;
+                                                                                                  list-style-type: none;
+                                                                                                  margin: 40px 10px -20px -30px;
+                                                                                                  width: 379px;
+    border-radius: 10px;                                                                          border: radius 10px;;
+
+                                                                                }
+                                                                                       
+#actionBtn{
+    float: right;
+    margin: 0 60px;
+}
+                                                #icona{
+                                                                margin-right: 10px;
+                                                }
+                                                        #iconb{
+                                                                        margin-left: 0px;
+                                                        }
+                                                                .list-item:hover{
+                                                                                        background-color:#00ffee;
+                                                                                        transition: 0.5s;
+                                                                }
+                                                                        .btn:active{
+                                                                                        background-color: #00ffee;
+                                                                                        transition: 0.6s;
+                                                                        }
+                                                                                
+                                                                                
+                                                                                       
+            </style>    
+</head>
+<body>
+         
+                <div class="ceeb">
+                         <h4 class="header">Soft Drink</h4> 
+                        <div>
+                                <div>
+                            <input type="text" id="addInput" class="txtbox" placeholder="what do you truly desire......">
+                             <button id="addBtn"  class="btn" onclick="addChange()"><i class="fas fa-plus fa-fw" style="color: red;" ></i></button>
+                        </div>
+                
+          
+                        
+                            <ul class="list" id="list">
+                              
+
+
+                            </ul>
+                        </div>  
+                </div>
+
+                        <script>
+                                let i=1;
+                                let minAddLength=3;
+                                let inputText=document.getElementById("addInput");
+                                let list=document.getElementById("list");
+                                        function filter(x){
+                                                    if(x){
+                                                   if(x.length>=minAddLength){
+                                                           return x;
+                                                   }else{
+                                                                alert("Min Add Length is 3");
+                                                                return false;
+
+                                                   }
+                                                    }else{
+
+                                                                    
+                                                                    alert("error");
+                                                                    return false;
+                                                   }
+                                        
+                                        }
+                                              function   showList(listItem){
+
+                                                list.innerHTML+=`<li class="list-item" id="list${i}">
+                                                <span id="listText${i}" >${listItem}</span>
+                                                
+                                              <div id="actionBtn"> 
+                                              <i class="fas fa-edit fa-fw " id="icona" onclick="editlist(${i})"></i>
+                                                <i class="fas fa-trash fa-fw"  id="iconb" onclick="dellist(${i})"></i></div>
+                                                </li>`;
+                                
+                                                            i++;
+                                              }
+                                                
+                                              function dellist(listId){
+                                                                let one= document.getElementById(`list${listId}`);
+                                                                let two=document.getElementById(`listText${listId}`).innerHTML;
+                                                                let delConfirm =confirm(`Are you Sure to delete ${two} `);
+                                                                if(delConfirm){
+                                                             
+                                                                list.removeChild(one);
+                                                                }
+                                                                else{
+                                                                            console.log("Cancel");
+                                                                }
+                                                  }
+                                                  function  editlist(listId){
+
+                                                            let currentText=document.getElementById(`listText${listId}`);
+                                                            let newText= prompt("Nice to meet you",currentText.innerHTML);
+
+                                                            if(filter(newText)){
+
+                                                            
+                                                            currentText.innerHTML=newText;
+                                                            }
+                                                  }
+
+                                        function addChange(){
+                                                  let getData=filter(inputText.value);
+                                                  if(getData){
+                                                 showList(getData);
+                                                  inputText.value="";
+                                                  }
+                                        }
+
+                                                 
+
+
+                        </script>
+</body>
+</html>
